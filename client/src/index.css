@@ -1,0 +1,133 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Inter:wght@300;400;500;600;700&family=Manrope:wght@400;500;600;700&family=Noto+Sans+Devanagari:wght@400;500;600;700&family=Noto+Serif+Devanagari:wght@600;700&display=swap');
+@import "tailwindcss";
+
+:root {
+  --color-sky-blue: #E2F1F8;
+  --color-soft-blue: #D2E8F0;
+  --color-ivory: #FAF7EF;
+  --color-deep-charcoal: #1C2326;
+  --color-slate: #394D52;
+  --color-mountain-green: #49605C;
+  --color-muted-sage: #89A49C;
+  --color-accent-blue: #2B5B97;
+  --color-subtle-gold: #BE9A5B;
+  --color-border: #D2E8F0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Inter', 'Manrope', 'Noto Sans Devanagari', system-ui, -apple-system, sans-serif;
+  background-color: var(--color-ivory);
+  color: var(--color-deep-charcoal);
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+  font-size: 16px;
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #E2F1F8;
+}
+::-webkit-scrollbar-thumb {
+  background: #89A49C;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #49605C;
+}
+
+/* Typography Hierarchy */
+.font-display-en {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-optical-sizing: auto;
+}
+
+.font-display-hi {
+  font-family: 'Noto Serif Devanagari', serif;
+}
+
+.font-body-en {
+  font-family: 'Inter', 'Manrope', sans-serif;
+}
+
+.font-body-hi {
+  font-family: 'Noto Sans Devanagari', sans-serif;
+}
+
+/* Heading Typography Scaling */
+h1, .h1-title {
+  font-family: 'Cormorant Garamond', 'Noto Serif Devanagari', Georgia, serif;
+  font-size: clamp(40px, 5.5vw, 76px);
+  line-height: 1.08;
+  font-weight: 500;
+  letter-spacing: -0.015em;
+}
+
+h2, .h2-title {
+  font-family: 'Cormorant Garamond', 'Noto Serif Devanagari', Georgia, serif;
+  font-size: clamp(32px, 3.8vw, 52px);
+  line-height: 1.15;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+}
+
+h3, .h3-title {
+  font-family: 'Cormorant Garamond', 'Noto Serif Devanagari', Georgia, serif;
+  font-size: clamp(22px, 2.2vw, 32px);
+  line-height: 1.25;
+  font-weight: 600;
+}
+
+.text-body {
+  font-size: 16px;
+  line-height: 1.7;
+  color: #394D52;
+}
+
+.text-small {
+  font-size: 14px;
+  line-height: 1.55;
+  color: #49605C;
+}
+
+.text-nav {
+  font-family: 'Inter', 'Manrope', sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+}
+
+/* Mountain Accent Line */
+.mountain-line {
+  height: 2px;
+  background: linear-gradient(90deg, #BE9A5B 0%, #2B5B97 100%);
+  width: 56px;
+}
+
+/* Editorial Card Container Styling */
+.card-editorial {
+  background-color: #FAF7EF;
+  border: 1px solid #D2E8F0;
+  border-radius: 16px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.card-editorial:hover {
+  border-color: #89A49C;
+  transform: translateY(-3px);
+  box-shadow: 0 16px 36px -10px rgba(28, 35, 38, 0.08);
+}
