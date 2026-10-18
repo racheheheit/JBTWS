@@ -17,6 +17,7 @@ import { GetInvolved } from './pages/GetInvolved';
 import { Donate } from './pages/Donate';
 import { Contact } from './pages/Contact';
 import { Admin } from './pages/Admin';
+import { GoverningBody } from './pages/GoverningBody';
 
 export function App() {
   return (
@@ -37,6 +38,8 @@ export function App() {
               <Route path="/calendar" element={<CalendarPage />} />
               <Route path="/get-involved" element={<GetInvolved />} />
               <Route path="/donate" element={<Donate />} />
+              <Route path="/governing-body" element={<GoverningBody />} />
+              <Route path="/governing-body/:tab" element={<GoverningBody />} />
               <Route path="/contact" element={<Contact />} />
               <Route path="/admin" element={<Admin />} />
             </Routes>

@@ -1,6 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { Link } from 'react-router-dom';
-import { ArrowRight, Compass, Heart, GraduationCap, Users, Shield, Leaf, Mail, Send, Camera, Sparkles, BookOpen, Layers, ChevronLeft, ChevronRight as ChevronRightIcon } from 'lucide-react';
+import { ArrowRight, Send, Camera, ChevronLeft, ChevronRight as ChevronRightIcon } from 'lucide-react';
 import { useLanguage } from '../context/LanguageContext';
 import { siteContent } from '../data/contentData';
 import { imagePlaceholders } from '../data/images';
@@ -11,23 +10,21 @@ import { LightboxModal } from '../components/common/LightboxModal';
 const bannerSlides = [
   {
     src: '/assets/banner_1.jpg',
-    labelEn: 'Traditional Martial Folk Dance — Hul',
-    labelHi: 'पारंपरिक मार्शल लोक नृत्य — हुल',
+    labelEn: 'Community Celebration at Red Fort, Delhi',
+    labelHi: 'लाल किला, दिल्ली में सामुदायिक उत्सव',
+    position: 'center 25%',
   },
   {
     src: '/assets/banner_2.jpg',
-    labelEn: 'Jaunsar-Bawar Cultural Festival',
-    labelHi: 'जौनसार-बावर सांस्कृतिक उत्सव',
+    labelEn: 'Traditional Jaunsari Folk Dance & Music Troupes',
+    labelHi: 'पारंपरिक जौनसारी लोक नृत्य एवं संगीत दल',
+    position: 'center 35%',
   },
   {
     src: '/assets/banner_3.jpg',
-    labelEn: 'Sacred Temple Gathering, Jaunsar',
-    labelHi: 'जौनसार के पवित्र मंदिर में एकत्र',
-  },
-  {
-    src: '/assets/banner_4.png',
-    labelEn: 'Community Celebrations & Torch Procession',
-    labelHi: 'सामुदायिक उत्सव और मशाल जुलूस',
+    labelEn: 'Cultural Heritage Gathering & Traditional Attire',
+    labelHi: 'सांस्कृतिक धरोहर सम्मेलन एवं पारंपरिक वेशभूषा',
+    position: 'center 45%',
   },
 ];
 
@@ -77,25 +74,25 @@ export const Home = () => {
     : imagePlaceholders.gallery.filter(item => item.category === galleryCategory);
 
   return (
-    <div className="space-y-20 md:space-y-28 bg-[#FAF7EF] pb-16">
+    <div className="bg-[#FAF7EF] pb-16">
       {/* ================================================== */}
-      {/* 1. HERO SECTION — matches reference layout exactly */}
+      {/* 1. HERO SECTION                                    */}
       {/* ================================================== */}
-      <section id="hero" className="relative w-full bg-[#E2F1F8] overflow-hidden pt-10 md:pt-14 pb-0 border-b border-[#D2E8F0]">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center flex flex-col items-center">
+      <section id="hero" className="relative w-full bg-[#E2F1F8] overflow-hidden pt-8 sm:pt-12 md:pt-14 pb-0 border-b border-[#D2E8F0]">
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 relative z-10 text-center flex flex-col items-center">
 
           {/* Big Title — "JBTWS DELHI" */}
-          <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-serif font-bold tracking-tight text-[#1C2326] leading-none mb-3 select-none">
+          <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-serif font-bold tracking-tight text-[#1C2326] leading-tight mb-2 select-none">
             {isHindi ? siteContent.org.titleHi : siteContent.org.titleEn}
           </h1>
 
           {/* Blue italic subtitle */}
-          <p className="text-base sm:text-lg md:text-xl font-serif italic font-semibold text-[#2B5B97] mb-5">
+          <p className="text-sm sm:text-base md:text-lg font-serif italic font-semibold text-[#2B5B97] mb-3">
             {isHindi ? siteContent.org.nameHi : siteContent.org.nameEn}
           </p>
 
           {/* Two-line tagline */}
-          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-serif font-normal text-[#1C2326] tracking-tight leading-snug max-w-3xl mx-auto mb-2">
+          <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-serif font-normal text-[#1C2326] tracking-tight leading-snug max-w-3xl mx-auto mb-2">
             {isHindi ? (
               <>
                 परंपरा का संरक्षण।<br />समुदाय का सशक्तिकरण।
@@ -108,20 +105,21 @@ export const Home = () => {
           </h2>
         </div>
 
-        {/* Hero artwork — transparent PNG, full width */}
-        <div className="w-full relative z-0 mt-4 max-w-6xl mx-auto px-4">
+        {/* Hero artwork — transparent PNG illustration sitting flush at bottom */}
+        <div className="w-full relative z-0 mt-2 sm:mt-4 max-w-5xl mx-auto px-4 flex justify-center">
           <img
             src="/assets/hero_art_transparent.png"
             alt="Jaunsar-Bawar Heritage Architecture Scene"
-            className="w-full h-auto object-contain block mx-auto"
+            className="w-full max-h-[320px] md:max-h-[380px] object-contain block mx-auto -mb-1"
           />
         </div>
       </section>
 
       {/* ================================================== */}
-      {/* 2. IMAGE BANNER / SLIDESHOW                        */}
+      {/* 2. IMAGE BANNER / SLIDESHOW (Framed editorial)     */}
       {/* ================================================== */}
-      <section id="banner" className="w-full !mt-0 relative overflow-hidden" style={{ height: '420px' }}>
+      <section id="banner" className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pt-8 sm:pt-12">
+        <div className="relative overflow-hidden rounded-2xl md:rounded-3xl shadow-lg border border-[#D2E8F0] bg-[#1C2326] aspect-[16/9] sm:aspect-[21/9] max-h-[520px]">
         {/* Slides */}
         {bannerSlides.map((slide, idx) => (
           <div
@@ -131,7 +129,12 @@ export const Home = () => {
             }`}
           >
             {slide.src ? (
-              <img src={slide.src} alt={slide.labelEn} className="w-full h-full object-cover" />
+              <img
+                src={slide.src}
+                alt={slide.labelEn}
+                className="w-full h-full object-cover"
+                style={{ objectPosition: slide.position || 'center' }}
+              />
             ) : (
               /* Placeholder until real images are uploaded */
               <div
@@ -191,17 +194,15 @@ export const Home = () => {
           ))}
         </div>
 
-        {/* Slide counter */}
-        <div className="absolute top-4 right-4 z-20 text-white/50 text-xs font-mono">
-          {currentSlide + 1} / {bannerSlides.length}
         </div>
       </section>
 
-
-      {/* ================================================== */}
-      {/* 2. ABOUT SECTION */}
-      {/* ================================================== */}
-      <section id="about" className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 scroll-mt-24">
+      {/* Main body content sections */}
+      <div className="space-y-20 md:space-y-28 mt-20 md:mt-28">
+        {/* ================================================== */}
+        {/* 3. ABOUT SECTION */}
+        {/* ================================================== */}
+        <section id="about" className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 scroll-mt-24">
         <div className="bg-[#FAF7EF] border border-[#D2E8F0] rounded-3xl p-8 md:p-14 shadow-xs space-y-12">
           <div className="max-w-3xl space-y-4">
             <span className="text-xs font-mono font-bold tracking-widest text-[#2B5B97] uppercase">
@@ -559,6 +560,7 @@ export const Home = () => {
           </div>
         </div>
       </section>
+      </div>
 
       {/* Lightbox Modal */}
       {selectedImage && (

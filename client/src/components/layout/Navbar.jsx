@@ -1,13 +1,16 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { Menu, X, ChevronRight, Globe, LogIn } from 'lucide-react';
+import { Menu, X, ChevronRight, ChevronDown, Globe, LogIn } from 'lucide-react';
 import { useLanguage } from '../../context/LanguageContext';
 
 export const Navbar = () => {
   const { isHindi, toggleLanguage } = useLanguage();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [activeDropdown, setActiveDropdown] = useState(null);
+  const [mobileExpanded, setMobileExpanded] = useState({ activity: false, 'governing-body': false });
   const [scrolled, setScrolled] = useState(false);
   const location = useLocation();
+  const navRef = useRef(null);
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 20);
@@ -17,30 +20,81 @@ export const Navbar = () => {
 
   useEffect(() => {
     setMobileMenuOpen(false);
+    setActiveDropdown(null);
   }, [location.pathname]);
 
-  const navLinks = isHindi
-    ? [
-        { path: '/',            label: 'मुख्य' },
-        { path: '/about',       label: 'परिचय' },
-        { path: '/culture',     label: 'धरोहर' },
-        { path: '/our-work',    label: 'पहल' },
-        { path: '/gallery',     label: 'गैलरी' },
-        { path: '/get-involved',label: 'जुड़ें' },
-        { path: '/contact',     label: 'संपर्क' },
-      ]
-    : [
-        { path: '/',            label: 'HOME' },
-        { path: '/about',       label: 'ABOUT' },
-        { path: '/culture',     label: 'HERITAGE' },
-        { path: '/our-work',    label: 'INITIATIVES' },
-        { path: '/gallery',     label: 'GALLERY' },
-        { path: '/get-involved',label: 'GET INVOLVED' },
-        { path: '/contact',     label: 'CONTACT' },
-      ];
+  useEffect(() => {
+    const handleClickOutside = (e) => {
+      if (navRef.current && !navRef.current.contains(e.target)) {
+        setActiveDropdown(null);
+      }
+    };
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => document.removeEventListener('mousedown', handleClickOutside);
+  }, []);
+
+  const navItems = [
+    {
+      type: 'link',
+      path: '/',
+      labelEn: 'HOME',
+      labelHi: 'मुख्य',
+    },
+    {
+      type: 'link',
+      path: '/about',
+      labelEn: 'ABOUT',
+      labelHi: 'परिचय',
+    },
+    {
+      type: 'dropdown',
+      id: 'activity',
+      labelEn: 'ACTIVITY',
+      labelHi: 'गतिविधियां',
+      children: [
+        { path: '/healthcare', labelEn: 'Medical Camp', labelHi: 'चिकित्सा शिविर' },
+        { path: '/education',  labelEn: 'Education',    labelHi: 'शिक्षा' },
+        { path: '/events',     labelEn: 'Social Drives', labelHi: 'सामाजिक अभियान' },
+        { path: '/culture',    labelEn: 'Cultural Events', labelHi: 'सांस्कृतिक उत्सव' },
+      ],
+    },
+    {
+      type: 'dropdown',
+      id: 'governing-body',
+      labelEn: 'GOVERNING BODY',
+      labelHi: 'प्रबंधकारिणी',
+      children: [
+        { path: '/governing-body/present', labelEn: 'Present', labelHi: 'वर्तमान कार्यकारिणी' },
+        { path: '/governing-body/past',    labelEn: 'Past',    labelHi: 'पूर्व / संस्थापक सदस्य' },
+      ],
+    },
+    {
+      type: 'link',
+      path: '/gallery',
+      labelEn: 'GALLERY',
+      labelHi: 'गैलरी',
+    },
+    {
+      type: 'link',
+      path: '/get-involved',
+      labelEn: 'GET INVOLVED',
+      labelHi: 'जुड़ें',
+    },
+    {
+      type: 'link',
+      path: '/contact',
+      labelEn: 'CONTACT',
+      labelHi: 'संपर्क',
+    },
+  ];
+
+  const toggleMobileExpanded = (id) => {
+    setMobileExpanded(prev => ({ ...prev, [id]: !prev[id] }));
+  };
 
   return (
     <header
+      ref={navRef}
       className={`w-full sticky top-0 z-50 transition-all duration-300 ${
         scrolled
           ? 'bg-[#1C3A3A]/97 backdrop-blur-md border-b border-[#2A5252]/50 shadow-lg py-2'
@@ -67,21 +121,79 @@ export const Navbar = () => {
         </Link>
 
         {/* ── Centre / Right: Desktop Nav ── */}
-        <div className="hidden lg:flex items-center gap-6 xl:gap-8">
-          <nav className="flex items-center gap-5 xl:gap-6">
-            {navLinks.map((link) => {
-              const isActive = location.pathname === link.path;
+        <div className="hidden lg:flex items-center gap-5 xl:gap-7">
+          <nav className="flex items-center gap-4 xl:gap-6">
+            {navItems.map((item) => {
+              if (item.type === 'dropdown') {
+                const isChildActive = item.children.some(c => location.pathname.startsWith(c.path));
+                const isOpen = activeDropdown === item.id;
+
+                return (
+                  <div
+                    key={item.id}
+                    className="relative"
+                    onMouseEnter={() => setActiveDropdown(item.id)}
+                    onMouseLeave={() => setActiveDropdown(null)}
+                  >
+                    <button
+                      onClick={() => setActiveDropdown(prev => prev === item.id ? null : item.id)}
+                      className={`inline-flex items-center gap-1 text-[11px] xl:text-xs font-bold font-mono tracking-widest transition-colors py-1 relative ${
+                        isChildActive || isOpen
+                          ? 'text-[#BE9A5B] after:content-[""] after:absolute after:bottom-0 after:left-0 after:w-full after:h-[2px] after:bg-[#BE9A5B]'
+                          : 'text-[#D2E8F0]/75 hover:text-white'
+                      }`}
+                      aria-haspopup="true"
+                      aria-expanded={isOpen}
+                    >
+                      <span>{isHindi ? item.labelHi : item.labelEn}</span>
+                      <ChevronDown
+                        className={`w-3 h-3 transition-transform duration-200 ${
+                          isOpen ? 'rotate-180 text-[#BE9A5B]' : 'text-[#89A49C]'
+                        }`}
+                      />
+                    </button>
+
+                    {/* Dropdown Menu */}
+                    {isOpen && (
+                      <div className="absolute top-full left-0 pt-2 z-50">
+                        <div className="w-56 bg-[#173333] border border-[#2A5252] rounded-xl shadow-2xl py-2 backdrop-blur-md">
+                          {item.children.map((sub) => {
+                            const isSubActive = location.pathname === sub.path;
+                            return (
+                              <Link
+                                key={sub.path}
+                                to={sub.path}
+                                onClick={() => setActiveDropdown(null)}
+                                className={`flex items-center justify-between px-4 py-2.5 text-xs font-mono font-bold tracking-wider transition-colors ${
+                                  isSubActive
+                                    ? 'text-[#BE9A5B] bg-[#2A5252]/60'
+                                    : 'text-[#D2E8F0]/85 hover:text-white hover:bg-[#2A5252]/40'
+                                }`}
+                              >
+                                <span>{isHindi ? sub.labelHi : sub.labelEn}</span>
+                                <ChevronRight className="w-3.5 h-3.5 text-[#89A49C] opacity-70" />
+                              </Link>
+                            );
+                          })}
+                        </div>
+                      </div>
+                    )}
+                  </div>
+                );
+              }
+
+              const isActive = location.pathname === item.path;
               return (
                 <Link
-                  key={link.path}
-                  to={link.path}
+                  key={item.path}
+                  to={item.path}
                   className={`text-[11px] xl:text-xs font-bold font-mono tracking-widest transition-colors py-1 relative ${
                     isActive
                       ? 'text-[#BE9A5B] after:content-[""] after:absolute after:bottom-0 after:left-0 after:w-full after:h-[2px] after:bg-[#BE9A5B]'
                       : 'text-[#D2E8F0]/75 hover:text-white'
                   }`}
                 >
-                  {link.label}
+                  {isHindi ? item.labelHi : item.labelEn}
                 </Link>
               );
             })}
@@ -134,20 +246,69 @@ export const Navbar = () => {
 
       {/* ── Mobile Drawer ── */}
       {mobileMenuOpen && (
-        <div className="lg:hidden bg-[#1C3A3A] border-t border-[#2A5252]/40 px-4 py-4 space-y-1 shadow-xl">
-          {navLinks.map((link) => {
-            const isActive = location.pathname === link.path;
+        <div className="lg:hidden bg-[#1C3A3A] border-t border-[#2A5252]/40 px-4 py-4 space-y-1 shadow-xl max-h-[calc(100vh-80px)] overflow-y-auto">
+          {navItems.map((item) => {
+            if (item.type === 'dropdown') {
+              const isExpanded = mobileExpanded[item.id];
+              const isChildActive = item.children.some(c => location.pathname.startsWith(c.path));
+
+              return (
+                <div key={item.id} className="space-y-1">
+                  <button
+                    onClick={() => toggleMobileExpanded(item.id)}
+                    className={`w-full flex items-center justify-between px-4 py-3 text-xs font-bold font-mono tracking-wider rounded-lg transition-colors ${
+                      isChildActive
+                        ? 'text-[#BE9A5B] bg-[#2A5252]/50'
+                        : 'text-[#D2E8F0]/75 hover:bg-[#2A5252]/30 hover:text-white'
+                    }`}
+                  >
+                    <span>{isHindi ? item.labelHi : item.labelEn}</span>
+                    <ChevronDown
+                      className={`w-4 h-4 transition-transform duration-200 ${
+                        isExpanded ? 'rotate-180 text-[#BE9A5B]' : 'text-[#89A49C]'
+                      }`}
+                    />
+                  </button>
+
+                  {isExpanded && (
+                    <div className="pl-4 pr-1 py-1 space-y-1 border-l-2 border-[#BE9A5B]/30 ml-4">
+                      {item.children.map((sub) => {
+                        const isSubActive = location.pathname === sub.path;
+                        return (
+                          <Link
+                            key={sub.path}
+                            to={sub.path}
+                            onClick={() => setMobileMenuOpen(false)}
+                            className={`flex items-center justify-between px-3 py-2 text-xs font-mono font-bold tracking-wider rounded-md transition-colors ${
+                              isSubActive
+                                ? 'text-[#BE9A5B] bg-[#2A5252]/60'
+                                : 'text-[#D2E8F0]/75 hover:bg-[#2A5252]/30 hover:text-white'
+                            }`}
+                          >
+                            <span>{isHindi ? sub.labelHi : sub.labelEn}</span>
+                            <ChevronRight className="w-3.5 h-3.5 text-[#89A49C]" />
+                          </Link>
+                        );
+                      })}
+                    </div>
+                  )}
+                </div>
+              );
+            }
+
+            const isActive = location.pathname === item.path;
             return (
               <Link
-                key={link.path}
-                to={link.path}
+                key={item.path}
+                to={item.path}
+                onClick={() => setMobileMenuOpen(false)}
                 className={`flex items-center justify-between px-4 py-3 text-xs font-bold font-mono tracking-wider rounded-lg transition-colors ${
                   isActive
                     ? 'text-[#BE9A5B] bg-[#2A5252]/50'
                     : 'text-[#D2E8F0]/75 hover:bg-[#2A5252]/30 hover:text-white'
                 }`}
               >
-                <span>{link.label}</span>
+                <span>{isHindi ? item.labelHi : item.labelEn}</span>
                 <ChevronRight className="w-4 h-4 text-[#89A49C]" />
               </Link>
             );

@@ -1,7 +1,6 @@
 import React from 'react';
 import { ShieldCheck } from 'lucide-react';
 import { useLanguage } from '../context/LanguageContext';
-import { siteContent } from '../data/contentData';
 import { SectionHeading } from '../components/common/SectionHeading';
 
 export const About = () => {
@@ -9,28 +8,81 @@ export const About = () => {
 
   const objectives = [
     {
-      titleEn: "Cultural Preservation",
-      titleHi: "सांस्कृतिक संरक्षण",
-      descEn: "Safeguarding Jaunsar-Bawar temple architecture, folk dances (Harul), language, festivals, and ancestral traditions.",
-      descHi: "जौनसार-बावर की काष्ठ मंदिर वास्तुकला, लोक नृत्यों, बोली, त्योहारों और पूर्वजों की परंपराओं का संरक्षण।"
+      clause: "3(a)",
+      titleEn: "Member Welfare & Advancement",
+      titleHi: "सदस्य कल्याणकारी गतिविधियां",
+      descEn: "To undertake welfare activities, for promoting the cause and overall well-being of its members.",
+      descHi: "सदस्यों के हितों, अधिकारों और सर्वांगीण कल्याण को बढ़ावा देने के लिए सक्रिय कल्याणकारी गतिविधियों का संचालन करना।"
     },
     {
-      titleEn: "Free Healthcare & Camps",
-      titleHi: "निःशुल्क स्वास्थ्य सेवा",
-      descEn: "Organizing free medical checkup camps, specialist health consultations, and essential medicine distribution for needy families.",
-      descHi: "जरूरतमंद परिवारों के लिए मुफ्त चिकित्सा जांच शिविर, विशेषज्ञ डॉक्टर परामर्श और आवश्यक दवाओं का वितरण।"
+      clause: "3(b)",
+      titleEn: "Socio-Cultural Unity & Community Centre",
+      titleHi: "सामाजिक-सांस्कृतिक संवाद एवं सामुदायिक केंद्र",
+      descEn: "To increase socio-cultural interaction among its members and satisfy their needs due to unique cultural backgrounds. To make efforts to build a Community Centre for this purpose after obtaining land from the concerned authorities.",
+      descHi: "सदस्यों के बीच सामाजिक-सांस्कृतिक मेलजोल बढ़ाना और उनकी विशिष्ट सांस्कृतिक पृष्ठभूमि की आवश्यकताओं को पूरा करना; तथा संबंधित प्राधिकरणों से भूमि प्राप्त कर इस उद्देश्य के लिए एक समर्पित सामुदायिक केंद्र (Community Centre) स्थापित करने का प्रयास करना।"
     },
     {
-      titleEn: "Educational Support",
-      titleHi: "शिक्षा एवं छात्र सहायता",
-      descEn: "Promoting education awareness, guiding youth towards higher learning, and supporting classroom infrastructure.",
-      descHi: "शिक्षा जागरूकता को बढ़ावा देना, युवाओं को उच्च शिक्षा के लिए मार्गदर्शन देना और स्कूल अवसंरचना में सहयोग।"
+      clause: "3(c)",
+      titleEn: "Protection Against Harassment & Exploitation",
+      titleHi: "उत्पीड़न एवं शोषण से सुरक्षा व सहायता",
+      descEn: "To come for the rescue of those persons (hailing from Jaunsar Bawar Tribal area) who suffer harassment and exploitation.",
+      descHi: "जौनसार-बावर जनजातीय क्षेत्र के ऐसे प्रवासियों और नागरिकों की रक्षा, सहायता व न्याय दिलाना जो किसी भी प्रकार के उत्पीड़न या शोषण का सामना करते हैं।"
     },
     {
-      titleEn: "Community Unity & Welfare",
-      titleHi: "सामुदायिक एकता एवं कल्याण",
-      descEn: "Fostering mutual help, social harmony, and kinship among Jaunsar-Bawar community members residing in Delhi.",
-      descHi: "दिल्ली में रहने वाले जौनसार-बावर समुदाय के सदस्यों के बीच आपसी सहयोग, सामाजिक सद्भाव और भाईचारे को बढ़ावा देना।"
+      clause: "3(d)",
+      titleEn: "Education, Awareness & National Cultural Recognition",
+      titleHi: "ज्ञान-जागरूकता प्रसार एवं राष्ट्रीय सांस्कृतिक सम्मान",
+      descEn: "To undertake programmes for spreading useful knowledge and awareness in the tribal belt of Jaunsar Bawar (situated in north-western Dehradun, Uttarakhand) which lags far behind. Simultaneously, to make efforts towards earning a rightful place at the national level for the highly rich but little known culture of Jaunsar Bawar.",
+      descHi: "जौनसार-बावर (देहरादून, उत्तराखंड) के जनजातीय क्षेत्र में उपयोगी ज्ञान व जागरूकता कार्यक्रमों का प्रसार करना; तथा इस क्षेत्र की अत्यंत समृद्ध किंतु अल्पज्ञात संस्कृति को राष्ट्रीय स्तर पर उसका गौरवपूर्ण स्थान दिलाना।"
+    },
+    {
+      clause: "3(e)",
+      titleEn: "Delivery of Financial Aids, Grants & Regional Development",
+      titleHi: "वित्तीय सहायता/अनुदान का पारदर्शी वितरण व विकास",
+      descEn: "To help in the process of the delivery of financial aids/grants given by the State/Central Government and NGOs, so that benefits actually reach the needy in Jaunsar Bawar, ensuring development of this otherwise backward and neglected area.",
+      descHi: "केंद्र व राज्य सरकारों तथा गैर-सरकारी संगठनों द्वारा प्रदत्त आर्थिक सहायता व अनुदानों के वितरण में सहयोग करना ताकि लाभ सीधे जरूरतमंदों तक पहुंचे और क्षेत्र का संतुलित विकास सुनिश्चित हो।"
+    },
+    {
+      clause: "3(f)",
+      titleEn: "Resolving Socio-Economic Problems",
+      titleHi: "सामाजिक-आर्थिक समस्याओं का समाधान",
+      descEn: "To make efforts to highlight and to overcome the socio-economic problems of Jaunsar-Bawar by taking help from various forums available for that purpose.",
+      descHi: "विभिन्न उपलब्ध लोकतांत्रिक व प्रशासनिक मंचों के माध्यम से जौनसार-बावर की सामाजिक व आर्थिक समस्याओं को प्रमुखता से उठाना और उनके समाधान के ठोस उपाय करना।"
+    },
+    {
+      clause: "3(g)",
+      titleEn: "Promoting Sporting Talents & National Schemes (SAG)",
+      titleHi: "खेल प्रतिभाओं को प्रोत्साहन एवं राष्ट्रीय योजनाएं (SAG)",
+      descEn: "To make efforts to bring out the sporting talents from Jaunsar Bawar at national level under various schemes of GOI such as the \"Special Area Games\" (SAG) Scheme.",
+      descHi: "भारत सरकार की 'स्पेशल एरिया गेम्स' (Special Area Games - SAG) जैसी योजनाओं के तहत जौनसार-बावर के प्रतिभावान खिलाड़ियों को तराशना और उन्हें राष्ट्रीय पटल पर अवसर दिलाना।"
+    },
+    {
+      clause: "3(h)",
+      titleEn: "Land & Building Infrastructure",
+      titleHi: "भूमि, भवन एवं संस्थागत अवसंरचना",
+      descEn: "To own land and building or take them on lease or rent for achieving aims of the Society.",
+      descHi: "समिति के घोषित उद्देश्यों की पूर्ति के लिए भूमि और भवनों का स्वामित्व प्राप्त करना अथवा उन्हें पट्टे या किराए पर लेना।"
+    },
+    {
+      clause: "3(i)",
+      titleEn: "Grants, Aids & Institutional Assistance",
+      titleHi: "अनुदान, सहायता एवं वित्तीय संसाधन",
+      descEn: "To receive grants and aids or any other assistance from the GOI, NGOs, etc., in order to fulfill the aims and objects of the Society.",
+      descHi: "समिति के घोषित उद्देश्यों की पूर्ति हेतु भारत सरकार, गैर-सरकारी संस्थाओं आदि से सहायता, अनुदान और संसाधन प्राप्त करना।"
+    },
+    {
+      clause: "3(j)",
+      titleEn: "Dedicated & Value-Driven Membership",
+      titleHi: "सकारात्मक एवं समर्पित सदस्यता विस्तार",
+      descEn: "To make efforts to bring within its fold as its members right-thinking, effective, and willing persons conforming to the Rules and Regulations to fulfill the Society's aims.",
+      descHi: "समिति के उद्देश्यों की प्राप्ति हेतु नियमों के तहत सकारात्मक सोच वाले, कर्मठ और समर्पित व्यक्तियों को संगठन से जोड़ना।"
+    },
+    {
+      clause: "3(k)",
+      titleEn: "Incidental & Conducive Activities",
+      titleHi: "समस्त अनुषंगी एवं संवर्धक कल्याणकारी कार्य",
+      descEn: "To do all such things as incidental or conducive to the attainment of any of the above objects.",
+      descHi: "उपरोक्त सभी लक्ष्यों और उद्देश्यों की सफल प्राप्ति के लिए सभी प्रासंगिक, अनुकूल और आवश्यक कदम उठाना।"
     }
   ];
 
@@ -75,53 +127,69 @@ export const About = () => {
               <h4 className="text-base font-bold text-[#D5A33A]">
                 {isHindi ? 'संस्थागत विवरण' : 'Organization Details'}
               </h4>
-              <p className="text-xs text-[#DDD8CA]/80">Official Charter & References</p>
+              <p className="text-xs text-[#DDD8CA]/80">Official MoA & Registration</p>
             </div>
           </div>
 
-          <div className="space-y-4 text-xs">
+          <div className="space-y-3.5 text-xs">
             <div>
-              <span className="text-[#DDD8CA]/70 block mb-1">Official Name (English):</span>
-              <p className="font-semibold text-[#F7F3E8]">Jaunsar Bawar Janjatiya Kalyan Samiti, Delhi</p>
+              <span className="text-[#DDD8CA]/70 block mb-0.5">Official Name (English):</span>
+              <p className="font-semibold text-[#F7F3E8]">JAUNSAR BAWAR TRIBAL WELFARE SOCIETY, DELHI</p>
             </div>
             <div>
-              <span className="text-[#DDD8CA]/70 block mb-1">Official Name (Hindi):</span>
+              <span className="text-[#DDD8CA]/70 block mb-0.5">Official Name (Hindi):</span>
               <p className="font-semibold text-[#D5A33A] font-body-hi">जौनसार बावर जनजातीय कल्याण समिति, दिल्ली</p>
             </div>
             <div>
-              <span className="text-[#DDD8CA]/70 block mb-1">Primary Native Region:</span>
-              <p className="font-semibold text-[#F7F3E8]">Jaunsar-Bawar, Dehradun, Uttarakhand</p>
+              <span className="text-[#DDD8CA]/70 block mb-0.5">Registration Framework:</span>
+              <p className="font-semibold text-[#F7F3E8]">Societies Registration Act, 1860 (NCT of Delhi)</p>
             </div>
             <div>
-              <span className="text-[#DDD8CA]/70 block mb-1">HQ / Operations:</span>
-              <p className="font-semibold text-[#F7F3E8]">Delhi & NCR</p>
+              <span className="text-[#DDD8CA]/70 block mb-0.5">Registered Office Address:</span>
+              <p className="font-semibold text-[#F7F3E8] leading-relaxed">
+                D-11, FIRST FLOOR, DELHI CITIZEN CGHS LIMITED, PLOT NO-24, SECTOR-13, ROHINI, Rohini Sector 13, North West Delhi, Delhi, 110085
+              </p>
+            </div>
+            <div>
+              <span className="text-[#DDD8CA]/70 block mb-0.5">Primary Native Region:</span>
+              <p className="font-semibold text-[#F7F3E8]">Jaunsar-Bawar, District Dehradun, Uttarakhand</p>
             </div>
           </div>
         </div>
       </div>
 
-      {/* Core Objectives */}
+      {/* Core Objectives / Aims */}
       <div className="space-y-8">
-        <div className="text-center max-w-2xl mx-auto">
+        <div className="text-center max-w-3xl mx-auto">
           <h3 className={`h2-title text-[#173F3A] ${isHindi ? 'font-display-hi' : 'font-display-en'}`}>
-            {isHindi ? 'हमारे मुख्य उद्देश्य' : 'Our Core Objectives'}
+            {isHindi ? 'हमारे मुख्य उद्देश्य (Aims & Objects)' : 'Our Main Objectives (Aims & Objects)'}
           </h3>
           <p className="text-xs md:text-sm text-[#66706D] mt-2">
-            {isHindi ? 'समिति के चार मुख्य कार्यक्षेत्र जो हमारे प्रत्येक अभियान को दिशा देते हैं।' : 'Four fundamental pillars guiding all organizational programs and community efforts.'}
+            {isHindi
+              ? 'समिति के संस्थापन ज्ञापन (Memorandum of Association) के क्लॉज 3 के तहत घोषित आधिकारिक लक्ष्य एवं उद्देश्य।'
+              : 'Official aims and objects set forth under Clause 3 of the Memorandum of Association.'}
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div className="bg-white border border-[#DDD8CA] rounded-2xl shadow-sm divide-y divide-[#DDD8CA]/60 overflow-hidden">
           {objectives.map((obj, i) => (
-            <div key={i} className="bg-white border border-[#DDD8CA] rounded-xl p-6 card-editorial flex gap-4">
-              <div className="w-10 h-10 rounded-lg bg-[#F7F3E8] border border-[#DDD8CA] text-[#126A73] font-bold flex items-center justify-center shrink-0">
-                0{i + 1}
+            <div
+              key={i}
+              className="p-5 sm:p-6 transition-colors hover:bg-[#FAF7EF]/60 flex items-start gap-4 sm:gap-5"
+            >
+              {/* Numeric pointer (1, 2, 3...) */}
+              <div className="shrink-0 mt-0.5">
+                <span className="inline-flex items-center justify-center w-7 h-7 rounded-full bg-[#173F3A] text-[#FAF7EF] font-mono font-bold text-xs tracking-wider shadow-xs">
+                  {i + 1}
+                </span>
               </div>
-              <div className="space-y-1">
-                <h4 className={`h3-title text-[#173F3A] ${isHindi ? 'font-display-hi' : 'font-display-en'}`}>
+
+              {/* Content pointer */}
+              <div className="space-y-1.5 flex-1">
+                <h4 className={`text-base sm:text-lg font-semibold text-[#173F3A] leading-snug ${isHindi ? 'font-display-hi' : 'font-display-en'}`}>
                   {isHindi ? obj.titleHi : obj.titleEn}
                 </h4>
-                <p className="text-xs text-[#66706D] leading-relaxed">
+                <p className="text-xs sm:text-sm text-[#4A5552] leading-relaxed">
                   {isHindi ? obj.descHi : obj.descEn}
                 </p>
               </div>
