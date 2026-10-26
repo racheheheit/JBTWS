@@ -110,7 +110,7 @@ export const Home = () => {
           <img
             src="/assets/hero_art_transparent.png"
             alt="Jaunsar-Bawar Heritage Architecture Scene"
-            className="w-full max-h-[320px] md:max-h-[380px] object-contain block mx-auto -mb-1"
+            className="w-full max-h-[360px] md:max-h-[440px] lg:max-h-[480px] object-contain block mx-auto -mb-1"
           />
         </div>
       </section>
