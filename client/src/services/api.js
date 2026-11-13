@@ -37,7 +37,56 @@ export const api = {
       return await handleResponse(res);
     } catch (err) {
       console.warn('Backend API unavailable, using fallback data for Gallery:', err);
-      return { success: true, data: [] };
+      return {
+        success: true,
+        data: [
+          {
+            _id: 'gal-med-1',
+            title: 'Free Medical Camp & Doctor Consultations',
+            titleHindi: 'निःशुल्क चिकित्सा शिविर एवं डॉक्टर परामर्श',
+            category: 'HEALTHCARE',
+            image: '/assets/medical_camp.jpg',
+            description: 'Specialist doctors and volunteers providing free health consultations, checkups and medicines.',
+            location: 'Delhi'
+          },
+          {
+            _id: 'gal-edu-1',
+            title: 'Community Classroom Learning & Education Support',
+            titleHindi: 'सामुदायिक कक्षा शिक्षण एवं शैक्षणिक सहयोग',
+            category: 'EDUCATION',
+            image: '/assets/education_classroom.jpg',
+            description: 'Classroom learning environment and study materials provided to community children.',
+            location: 'Delhi'
+          },
+          {
+            _id: 'gal-com-1',
+            title: 'Community Celebration at Red Fort, Delhi',
+            titleHindi: 'लाल किला, दिल्ली में सामुदायिक उत्सव',
+            category: 'COMMUNITY',
+            image: '/assets/banner_1.jpg',
+            description: 'Gathering of Jaunsar-Bawar tribal community members in Delhi.',
+            location: 'Red Fort, Delhi'
+          },
+          {
+            _id: 'gal-cul-1',
+            title: 'Traditional Jaunsari Folk Dance & Music',
+            titleHindi: 'पारंपरिक जौनसारी लोक नृत्य एवं संगीत',
+            category: 'CULTURE',
+            image: '/assets/banner_2.jpg',
+            description: 'Cultural performance celebrating mountain folk traditions.',
+            location: 'Delhi'
+          },
+          {
+            _id: 'gal-peo-1',
+            title: 'Cultural Heritage Gathering & Traditional Attire',
+            titleHindi: 'सांस्कृतिक धरोहर सम्मेलन एवं पारंपरिक वेशभूषा',
+            category: 'PEOPLE',
+            image: '/assets/banner_3.jpg',
+            description: 'Community members in customary Jaunsari dress.',
+            location: 'Delhi'
+          }
+        ]
+      };
     }
   },
 

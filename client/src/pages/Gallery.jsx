@@ -82,16 +82,38 @@ export const Gallery = () => {
       ) : (
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {filteredItems.map((item, idx) => (
-            <ImagePlaceholder
-              key={item._id || idx}
-              tag={`[GALLERY: ${item.category}]`}
-              title={item.title}
-              titleHindi={item.titleHindi}
-              category={item.category}
-              aspectRatio="aspect-[4/3]"
-              showViewBtn={true}
-              onClick={() => setSelectedIndex(idx)}
-            />
+            item.image ? (
+              <div
+                key={item._id || idx}
+                onClick={() => setSelectedIndex(idx)}
+                className="group relative cursor-pointer overflow-hidden rounded-2xl border border-[#DDD8CA] shadow-sm hover:shadow-xl transition-all duration-300 aspect-[4/3] bg-black/10"
+              >
+                <img
+                  src={item.image}
+                  alt={item.title}
+                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-4">
+                  <span className="text-[10px] font-mono uppercase tracking-widest text-[#D5A33A]">
+                    {item.category}
+                  </span>
+                  <h4 className="text-sm font-bold text-white leading-snug">
+                    {isHindi ? item.titleHindi || item.title : item.title}
+                  </h4>
+                </div>
+              </div>
+            ) : (
+              <ImagePlaceholder
+                key={item._id || idx}
+                tag={`[GALLERY: ${item.category}]`}
+                title={item.title}
+                titleHindi={item.titleHindi}
+                category={item.category}
+                aspectRatio="aspect-[4/3]"
+                showViewBtn={true}
+                onClick={() => setSelectedIndex(idx)}
+              />
+            )
           ))}
         </div>
       )}

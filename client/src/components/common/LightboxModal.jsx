@@ -43,18 +43,26 @@ export const LightboxModal = ({ isOpen, onClose, item, onNext, onPrev }) => {
       {/* Main Content Container */}
       <div className="relative w-full max-w-4xl bg-[#173F3A] border border-[#DDD8CA]/40 rounded-2xl overflow-hidden shadow-2xl flex flex-col md:flex-row">
         {/* Visual Container */}
-        <div className="w-full md:w-2/3 bg-[#173F3A] min-h-[300px] md:min-h-[420px] flex items-center justify-center p-8 relative border-b md:border-b-0 md:border-r border-[#DDD8CA]/20">
-          <div className="text-center p-6 border border-dashed border-[#D5A33A]/50 rounded-xl bg-[#126A73]/20 max-w-md">
-            <span className="text-[11px] font-mono text-[#D5A33A] uppercase tracking-widest block mb-2 font-semibold">
-              {item.tag || '[DOCUMENT / PHOTO PLACEHOLDER]'}
-            </span>
-            <h3 className={`text-xl font-bold text-[#F7F3E8] mb-2 ${isHindi ? 'font-display-hi' : 'font-display-en'}`}>
-              {isHindi ? item.titleHindi || item.title : item.title}
-            </h3>
-            <p className="text-xs text-[#DDD8CA]">
-              {item.category || item.location || 'Jaunsar-Bawar Cultural Archive'}
-            </p>
-          </div>
+        <div className="w-full md:w-2/3 bg-[#0f2421] min-h-[300px] md:min-h-[420px] flex items-center justify-center p-4 md:p-6 relative border-b md:border-b-0 md:border-r border-[#DDD8CA]/20">
+          {item.image || item.src ? (
+            <img
+              src={item.image || item.src}
+              alt={item.title || 'Preview'}
+              className="max-h-[70vh] w-auto max-w-full object-contain rounded-lg shadow-lg"
+            />
+          ) : (
+            <div className="text-center p-6 border border-dashed border-[#D5A33A]/50 rounded-xl bg-[#126A73]/20 max-w-md">
+              <span className="text-[11px] font-mono text-[#D5A33A] uppercase tracking-widest block mb-2 font-semibold">
+                {item.tag || '[DOCUMENT / PHOTO PLACEHOLDER]'}
+              </span>
+              <h3 className={`text-xl font-bold text-[#F7F3E8] mb-2 ${isHindi ? 'font-display-hi' : 'font-display-en'}`}>
+                {isHindi ? item.titleHindi || item.title : item.title}
+              </h3>
+              <p className="text-xs text-[#DDD8CA]">
+                {item.category || item.location || 'Jaunsar-Bawar Cultural Archive'}
+              </p>
+            </div>
+          )}
         </div>
 
         {/* Details Sidebar */}

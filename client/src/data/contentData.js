@@ -13,7 +13,7 @@ export const siteContent = {
     taglineEn: "Preserving Heritage. Empowering Communities.",
     taglineHi: "परंपरा का संरक्षण, समुदाय का सशक्तिकरण",
     heroStatement: "A living bridge between the mountains, our heritage, and the communities that carry it forward.",
-    contactEmail: "info@jbtws.org",
+    contactEmail: "jbtwsdel@gmail.com",
     contactLocation: "D-11, First Floor, Delhi Citizen CGHS Limited, Plot No-24, Sector-13, Rohini, Rohini Sector 13, North West Delhi, Delhi, 110085",
     nativeRegion: "Jaunsar-Bawar, Dehradun District, Uttarakhand"
   },
@@ -219,10 +219,10 @@ export const siteContent = {
     visitEn: "Delhi, India (Official Address)",
     visitAddress: "D-11, First Floor, Delhi Citizen CGHS Limited, Plot No-24, Sector-13, Rohini, Rohini Sector 13, North West Delhi, Delhi, 110085",
     phone: "+91 (011) 2345-6789",
-    email: "info@jbjws.org",
+    email: "jbtwsdel@gmail.com",
     socials: {
       instagram: "https://instagram.com/jbjws_delhi",
-      facebook: "https://facebook.com/jbjwsdelhi",
+      facebook: "https://www.facebook.com/jbtws.delhi.750",
       youtube: "https://youtube.com/@jbjws_delhi"
     }
   }

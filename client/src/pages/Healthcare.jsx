@@ -82,15 +82,24 @@ export const Healthcare = () => {
           </div>
 
           <div className="lg:col-span-5">
-            <ImagePlaceholder
-              tag="[17TH MEDICAL CAMP POSTER PLACEHOLDER]"
-              title="Official 17th Free Medical Camp Poster"
-              titleHindi="17वां निःशुल्क चिकित्सा शिविर - आधिकारिक पोस्टर"
-              category="Medical Camp Poster"
-              aspectRatio="aspect-[3/4]"
-              showViewBtn={true}
+            <div
               onClick={() => setMedicalPosterOpen(true)}
-            />
+              className="group relative cursor-pointer overflow-hidden rounded-2xl border-2 border-[#D5A33A]/40 shadow-xl hover:shadow-2xl transition-all duration-300 aspect-[4/3] bg-black/20"
+            >
+              <img
+                src="/assets/medical_camp.jpg"
+                alt="Free Medical Camp Checkup by JBTWS Doctors"
+                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-[#173F3A]/90 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-5">
+                <span className="text-xs font-semibold text-[#F7F3E8] bg-[#126A73] px-3.5 py-1.5 rounded-lg border border-[#DDD8CA]/30 shadow">
+                  {isHindi ? 'बड़ा चित्र देखें' : 'Click to View Full Photo'}
+                </span>
+              </div>
+              <div className="absolute top-3 left-3 bg-[#173F3A]/85 backdrop-blur-xs text-[#D5A33A] text-[10px] font-mono uppercase tracking-widest px-2.5 py-1 rounded-md border border-[#D5A33A]/30">
+                {isHindi ? 'चिकित्सा शिविर' : 'Free Medical Camp'}
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -122,12 +131,12 @@ export const Healthcare = () => {
         isOpen={medicalPosterOpen}
         onClose={() => setMedicalPosterOpen(false)}
         item={{
-          title: "17th Free Medical Camp Poster",
-          titleHindi: "17वां निःशुल्क चिकित्सा शिविर - आधिकारिक पोस्टर",
+          title: "17th Free Medical Camp Doctor Consultations",
+          titleHindi: "17वां निःशुल्क चिकित्सा शिविर - डॉक्टर परामर्श",
           category: "Medical Camp Archive",
-          tag: "[17TH MEDICAL CAMP POSTER PLACEHOLDER]",
-          description: "Documented medical camp poster detailing free health consultations, eye checkups, blood pressure screenings, and free medicine distribution conducted by Jaunsar Bawar Janjatiya Kalyan Samiti, Delhi.",
-          descriptionHindi: "जौनसार बावर जनजातीय कल्याण समिति, दिल्ली द्वारा आयोजित 17वें नि:शुल्क चिकित्सा शिविर का आधिकारिक विवरण दस्तावेज।",
+          image: "/assets/medical_camp.jpg",
+          description: "Specialist doctors and volunteers providing health checkups, consultations, and distributing free medicines to children and community families during the JBTWS medical camp.",
+          descriptionHindi: "जौनसार बावर जनजातीय कल्याण समिति, दिल्ली द्वारा आयोजित निःशुल्क चिकित्सा शिविर में विशेषज्ञ डॉक्टरों द्वारा बच्चों व जरूरतमंद परिवारों का स्वास्थ्य परीक्षण एवं दवा वितरण।",
           location: "Delhi"
         }}
       />

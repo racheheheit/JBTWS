@@ -54,7 +54,22 @@ export const Contact = () => {
               <Mail className="w-5 h-5 text-[#D5A33A] shrink-0 mt-0.5" />
               <div>
                 <span className="text-[#DDD8CA]/70 block font-semibold">Official Email:</span>
-                <p className="text-[#F7F3E8]">{siteContent.org.contactEmail}</p>
+                <a href={`mailto:${siteContent.org.contactEmail}`} className="text-[#F7F3E8] hover:text-[#D5A33A] transition-colors">{siteContent.org.contactEmail}</a>
+              </div>
+            </div>
+
+            <div className="flex items-start gap-3">
+              <Globe className="w-5 h-5 text-[#D5A33A] shrink-0 mt-0.5" />
+              <div>
+                <span className="text-[#DDD8CA]/70 block font-semibold">Official Facebook:</span>
+                <a
+                  href="https://www.facebook.com/jbtws.delhi.750"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-[#D5A33A] hover:underline"
+                >
+                  facebook.com/jbtws.delhi.750
+                </a>
               </div>
             </div>
 

@@ -74,22 +74,31 @@ export const Education = () => {
         </div>
 
         <div className="lg:col-span-5">
-          <ImagePlaceholder
-            tag="[CLASSROOM PHOTOGRAPH PLACEHOLDER]"
-            title="Classroom Learning Support Drive"
-            titleHindi="सामुदायिक कक्षा शिक्षण सहयोग अभियान"
-            category="Education Drive"
-            aspectRatio="aspect-[4/3]"
-            showViewBtn={true}
+          <div
             onClick={() => setSelectedImage({
-              title: "Classroom Learning Support Drive",
-              titleHindi: "सामुदायिक कक्षा शिक्षण सहयोग अभियान",
+              title: "Community Classroom & Educational Setup",
+              titleHindi: "सामुदायिक कक्षा एवं शैक्षणिक परिवेश",
               category: "Education Initiative",
-              tag: "[CLASSROOM PHOTOGRAPH PLACEHOLDER]",
-              description: "Documented photograph of children participating in community educational drive organized by the Samiti.",
-              location: "Delhi"
+              image: "/assets/education_classroom.jpg",
+              description: "Classroom infrastructure and study environment established to support quality education and learning for community children.",
+              location: "JBTWS Community Center"
             })}
-          />
+            className="group relative cursor-pointer overflow-hidden rounded-2xl border-2 border-[#D5A33A]/40 shadow-lg hover:shadow-2xl transition-all duration-300 aspect-[4/3] bg-black/10"
+          >
+            <img
+              src="/assets/education_classroom.jpg"
+              alt="Community Classroom by JBTWS"
+              className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-[#173F3A]/85 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-5">
+              <span className="text-xs font-semibold text-[#F7F3E8] bg-[#126A73] px-3.5 py-1.5 rounded-lg border border-[#DDD8CA]/30 shadow">
+                {isHindi ? 'बड़ा चित्र देखें' : 'Click to View Full Photo'}
+              </span>
+            </div>
+            <div className="absolute top-3 left-3 bg-[#173F3A]/85 backdrop-blur-xs text-[#D5A33A] text-[10px] font-mono uppercase tracking-widest px-2.5 py-1 rounded-md border border-[#D5A33A]/30">
+              {isHindi ? 'शिक्षा शिविर' : 'Education Drive'}
+            </div>
+          </div>
         </div>
       </div>
 

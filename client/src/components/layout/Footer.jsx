@@ -53,9 +53,10 @@ export const Footer = () => {
             <ul className="grid grid-cols-2 gap-2 text-xs font-mono text-[#D2E8F0]">
               <li><Link to="/" className="hover:text-[#BE9A5B] transition-colors">HOME</Link></li>
               <li><Link to="/about" className="hover:text-[#BE9A5B] transition-colors">ABOUT</Link></li>
-              <li><Link to="/culture" className="hover:text-[#BE9A5B] transition-colors">HERITAGE</Link></li>
-              <li><Link to="/our-work" className="hover:text-[#BE9A5B] transition-colors">INITIATIVES</Link></li>
+              <li><Link to="/healthcare" className="hover:text-[#BE9A5B] transition-colors">MEDICAL CAMP</Link></li>
+              <li><Link to="/education" className="hover:text-[#BE9A5B] transition-colors">EDUCATION</Link></li>
               <li><Link to="/gallery" className="hover:text-[#BE9A5B] transition-colors">GALLERY</Link></li>
+              <li><Link to="/culture" className="hover:text-[#BE9A5B] transition-colors">HERITAGE</Link></li>
               <li><Link to="/get-involved" className="hover:text-[#BE9A5B] transition-colors">GET INVOLVED</Link></li>
               <li><Link to="/contact" className="hover:text-[#BE9A5B] transition-colors">CONTACT</Link></li>
             </ul>
@@ -81,7 +82,7 @@ export const Footer = () => {
 
               {/* Facebook */}
               <a
-                href="https://facebook.com/jbjwsdelhi"
+                href="https://www.facebook.com/jbtws.delhi.750"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="w-9 h-9 rounded-lg bg-[#394D52]/50 hover:bg-[#2B5B97] border border-[#394D52] flex items-center justify-center transition-colors"
@@ -103,7 +104,7 @@ export const Footer = () => {
             </div>
 
             <p className="text-[11px] font-mono text-[#89A49C]">
-              Email: info@jbjws.org
+              Email: jbtwsdel@gmail.com
             </p>
           </div>
         </div>
