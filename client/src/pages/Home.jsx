@@ -7,22 +7,16 @@ import { siteContent } from '../data/contentData';
 /* ─── Banner slide data ─── */
 const bannerSlides = [
   {
-    src: '/assets/banner_1.jpg',
-    labelEn: 'Community Celebration at Red Fort, Delhi',
-    labelHi: 'लाल किला, दिल्ली में सामुदायिक उत्सव',
-    position: 'center 25%',
-  },
-  {
-    src: '/assets/banner_2.jpg',
-    labelEn: 'Traditional Jaunsari Folk Dance & Music Troupes',
-    labelHi: 'पारंपरिक जौनसारी लोक नृत्य एवं संगीत दल',
-    position: 'center 35%',
-  },
-  {
-    src: '/assets/banner_3.jpg',
-    labelEn: 'Cultural Heritage Gathering & Traditional Attire',
-    labelHi: 'सांस्कृतिक धरोहर सम्मेलन एवं पारंपरिक वेशभूषा',
+    src: '/assets/cultural_dance_1.jpg',
+    labelEn: 'Traditional Harul Folk Dance — Community Celebration',
+    labelHi: 'पारंपरिक हारुल लोक नृत्य — सामुदायिक उत्सव',
     position: 'center 45%',
+  },
+  {
+    src: '/assets/cultural_dance_2.jpg',
+    labelEn: 'Traditional Jaunsari Folk Dance & Heritage Attire',
+    labelHi: 'पारंपरिक जौनसारी लोक नृत्य एवं सांस्कृतिक वेशभूषा',
+    position: 'center 40%',
   },
 ];
 
